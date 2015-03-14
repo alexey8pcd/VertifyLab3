@@ -1,24 +1,35 @@
+
 /**
-@author Alexey
-*/
+ * @author Alexey
+ */
 public class Key {
+
     private char charToEncrypt;
     private char[] alphabet;
+    private char[] replacingAlphabet;
 
-    void setCharToEncrypt(char c) {
-        charToEncrypt=c;
+    public void setCharToEncrypt(char c) {
+        charToEncrypt = c;
     }
 
-    char getCharToEncrypt() {
+    public char getCharToEncrypt() {
         return charToEncrypt;
     }
 
-    void setChars(char[] alphabet) {
-        this.alphabet=alphabet;
+    public void setChars(char[] alphabet) {
+        this.alphabet = alphabet;
     }
 
-    char[] getAllChars() {
+    public char[] getAllChars() {
         return alphabet;
+    }
+
+    public void setReplacingAlphabet(char[] replacingAlphabet) {
+        this.replacingAlphabet = replacingAlphabet;
+    }
+
+    public char[] getReplacingAlphabet() {
+        return replacingAlphabet;
     }
 
 }

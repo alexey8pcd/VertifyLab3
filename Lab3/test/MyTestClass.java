@@ -85,5 +85,17 @@ public class MyTestClass {
         char[] expected = {'a', 'b', 'c'};
         char[] result = key.getAllChars();
         assertArrayEquals(expected, result);
-    }  
+    }
+    
+    @Test
+    public void testGetAndSetReplace(){
+        Key key=new Key();
+        char[] alphabet={
+            'z','y','x'
+        };
+        key.setReplacingAlphabet(alphabet);
+        char[] expected={'z','y','x'};
+        char[] result=key.getReplacingAlphabet();
+        assertArrayEquals(expected, result);
+    }
 }
