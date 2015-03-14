@@ -6,17 +6,18 @@
 
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  *
  * @author Алексей
  */
-public class Test {
+public class MyTestClass {
 
-    public Test() {
+    public MyTestClass() {
     }
 
     @BeforeClass
@@ -35,16 +36,26 @@ public class Test {
     public void tearDown() {
     }
 
-    @org.junit.Test
+    @Test
     public void testEncrypt() {
         Encryptor encryptor = new Encryptor();
-        Assert.assertNotNull(encryptor);
+        assertNotNull(encryptor);
     }
     
-    @org.junit.Test
+    @Test
     public void testKey(){
         Key key = new Key();
-        Assert.assertNotNull(key);
+        assertNotNull(key);
+    }
+    
+    @Test
+    public void testGetAndSetOneChar(){
+        Key key = new Key();
+        key.setCharToEncrypt('a');
+        char expected = 'a';
+        char result = key.getCharToEncrypt();
+        assertEquals(expected, result);
+        
     }
 
 }
