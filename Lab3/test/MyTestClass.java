@@ -41,24 +41,24 @@ public class MyTestClass {
         Encryptor encryptor = new Encryptor();
         assertNotNull(encryptor);
     }
-    
+
     @Test
-    public void testKey(){
+    public void testKey() {
         Key key = new Key();
         assertNotNull(key);
     }
-    
+
     @Test
-    public void testGetAndSetOneChar(){
+    public void testGetAndSetOneChar() {
         Key key = new Key();
         key.setCharToEncrypt('a');
         char expected = 'a';
         char result = key.getCharToEncrypt();
-        assertEquals(expected, result);        
+        assertEquals(expected, result);
     }
-    
+
     @Test
-    public void testGetAndSetAnotherChar(){
+    public void testGetAndSetAnotherChar() {
         Key key = new Key();
         key.setCharToEncrypt('g');
         char expected = 'g';
@@ -66,4 +66,24 @@ public class MyTestClass {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void testGetAndSetAnotherChar2() {
+        Key key = new Key();
+        key.setCharToEncrypt('m');
+        char expected = 'm';
+        char result = key.getCharToEncrypt();
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetAndSetChars() {
+        Key key = new Key();
+        char[] alphabet = {
+            'a', 'b', 'c'
+        };
+        key.setChars(alphabet);
+        char[] expected = {'a', 'b', 'c'};
+        char[] result = key.getAllChars();
+        assertArrayEquals(expected, result);
+    }  
 }
