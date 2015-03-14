@@ -2,6 +2,6 @@
 @author Alexey
 */
 class Encryptor {
-
+    
     
 }

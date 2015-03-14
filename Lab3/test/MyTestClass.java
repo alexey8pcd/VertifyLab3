@@ -114,4 +114,17 @@ public class MyTestClass {
         char result = key.getEncryptedChar('z');
         assertEquals(expected, result);
     }
+
+    @Test
+    public void testCharArrayEquals() {
+        char[] alpahbet1 = {
+            'a', 'b', 'c', 'd'
+        };
+        char[] alphabet2 = {
+            'z', 'x', 'v', 'n'
+        };
+        boolean expected = false;
+        boolean result = Comparer.compareCharArrays(alpahbet1, alphabet2);
+        assertEquals(expected, result);        
+    }
 }

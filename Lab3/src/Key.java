@@ -1,4 +1,6 @@
 
+import java.util.Arrays;
+
 /**
  * @author Alexey
  */
@@ -9,6 +11,12 @@ public class Key {
     private char[] replacingAlphabet;
 
     public static final char ILLEGAL_SYMBOL = '\u0000';
+
+    public Key() {
+        this.charToEncrypt = ILLEGAL_SYMBOL;
+        this.alphabet = null;
+        this.replacingAlphabet = null;
+    }
 
     public void setCharToEncrypt(char c) {
         charToEncrypt = c;
@@ -60,5 +68,5 @@ public class Key {
         }
         return ILLEGAL_SYMBOL;
     }
-
+      
 }
