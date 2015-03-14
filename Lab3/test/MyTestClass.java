@@ -127,4 +127,30 @@ public class MyTestClass {
         boolean result = Comparer.compareCharArrays(alpahbet1, alphabet2);
         assertEquals(expected, result);        
     }
+    
+    @Test
+    public void testCharArrayEquals2() {
+        char[] alpahbet1 = {
+            'a', 'b', 'c', 'd'
+        };
+        char[] alphabet2 = {
+            'a','b','c'
+        };
+        boolean expected = false;
+        boolean result = Comparer.compareCharArrays(alpahbet1, alphabet2);
+        assertEquals(expected, result);        
+    }
+    
+    @Test
+    public void testCharArrayEquals3() {
+        char[] alpahbet1 = {
+            'a', 'b', 'c', 'd'
+        };
+        char[] alphabet2 = {
+            'a','b','c','d'
+        };
+        boolean expected = true;
+        boolean result = Comparer.compareCharArrays(alpahbet1, alphabet2);
+        assertEquals(expected, result);        
+    }
 }
