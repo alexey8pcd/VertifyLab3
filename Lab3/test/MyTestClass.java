@@ -54,8 +54,16 @@ public class MyTestClass {
         key.setCharToEncrypt('a');
         char expected = 'a';
         char result = key.getCharToEncrypt();
+        assertEquals(expected, result);        
+    }
+    
+    @Test
+    public void testGetAndSetAnotherChar(){
+        Key key = new Key();
+        key.setCharToEncrypt('g');
+        char expected = 'g';
+        char result = key.getCharToEncrypt();
         assertEquals(expected, result);
-        
     }
 
 }
