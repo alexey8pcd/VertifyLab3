@@ -15,30 +15,36 @@ import org.junit.BeforeClass;
  * @author Алексей
  */
 public class Test {
-    
+
     public Test() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @org.junit.Test
-    public void testEncrypt(){
-        Encryptor encryptor=new Encryptor();
+    public void testEncrypt() {
+        Encryptor encryptor = new Encryptor();
         Assert.assertNotNull(encryptor);
+    }
+    
+    @org.junit.Test
+    public void testKey(){
+        Key key = new Key();
+        Assert.assertNotNull(key);
     }
 
 }
