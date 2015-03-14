@@ -1,0 +1,7 @@
+/**
+@author Alexey
+*/
+class Encryptor {
+
+    
+}
