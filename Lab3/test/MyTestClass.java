@@ -81,21 +81,37 @@ public class MyTestClass {
         char[] alphabet = {
             'a', 'b', 'c'
         };
-        key.setChars(alphabet);
+        key.setBaseAlphabet(alphabet);
         char[] expected = {'a', 'b', 'c'};
         char[] result = key.getAllChars();
         assertArrayEquals(expected, result);
     }
-    
+
     @Test
-    public void testGetAndSetReplace(){
-        Key key=new Key();
-        char[] alphabet={
-            'z','y','x'
+    public void testGetAndSetReplace() {
+        Key key = new Key();
+        char[] alphabet = {
+            'z', 'y', 'x'
         };
         key.setReplacingAlphabet(alphabet);
-        char[] expected={'z','y','x'};
-        char[] result=key.getReplacingAlphabet();
+        char[] expected = {'z', 'y', 'x'};
+        char[] result = key.getReplacingAlphabet();
         assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testReplacedChar() throws Exception {
+        Key key = new Key();
+        char[] aphabet = {
+            'z', 'y', 'x'
+        };
+        char[] replacingAlphabet = {
+            'b', 's', 'e'
+        };
+        key.setBaseAlphabet(aphabet);
+        key.setReplacingAlphabet(replacingAlphabet);
+        char expected = 'b';
+        char result = key.getEncryptedChar('z');
+        assertEquals(expected, result);
     }
 }
