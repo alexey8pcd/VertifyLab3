@@ -234,4 +234,21 @@ public class MyTestClass {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void testSetAndGetKeyInEncryptor() {
+        Encryptor encryptor = new Encryptor();
+        Key expected = new Key();
+        char[] alphabet = {
+            'a', 'b', 'c'
+        };
+        char[] alphabet2 = {
+            'z', 'v', 'g'
+        };
+        expected.setBaseAlphabet(alphabet);
+        expected.setReplacingAlphabet(alphabet2);
+        encryptor.setKey(expected);
+        Key result=encryptor.getKey();
+        assertEquals(expected, result);
+    }    
+
 }
