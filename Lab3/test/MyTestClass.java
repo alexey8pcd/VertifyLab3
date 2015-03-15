@@ -83,7 +83,7 @@ public class MyTestClass {
         };
         key.setBaseAlphabet(alphabet);
         char[] expected = {'a', 'b', 'c'};
-        char[] result = key.getAllChars();
+        char[] result = key.getBaseAlphabet();
         assertArrayEquals(expected, result);
     }
 
@@ -249,6 +249,20 @@ public class MyTestClass {
         encryptor.setKey(expected);
         Key result=encryptor.getKey();
         assertEquals(expected, result);
-    }    
+    }
+    
+    @Test
+    public void testEncryptOneChar(){
+        Encryptor encryptor=new Encryptor();        
+        char[] alphabet={'a'};
+        char[] replacingAlphabet={'z'};
+        encryptor.setKey(new Key(alphabet,replacingAlphabet));
+        char toEncrypt='a';
+        char expected='z';
+        char result=encryptor.encryptChar(toEncrypt);
+        assertEquals(expected, result);
+    }
+    
+    
 
 }

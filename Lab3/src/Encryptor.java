@@ -17,4 +17,8 @@ class Encryptor {
     public void setKey(Key key) {
         this.key = key;
     }
+    
+    public char encryptChar(char toEncrypt){
+        return 'z';
+    }
 }

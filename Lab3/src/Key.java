@@ -18,6 +18,12 @@ public class Key {
         this.replacingAlphabet = null;
     }
 
+    public Key(char[] baseAlphabet, char[] replacingAlphabet) {
+        setBaseAlphabet(alphabet);
+        setReplacingAlphabet(replacingAlphabet);
+        charToEncrypt = ILLEGAL_SYMBOL;
+    }
+
     public void setCharToEncrypt(char c) {
         charToEncrypt = c;
     }
@@ -30,7 +36,7 @@ public class Key {
         this.alphabet = alphabet;
     }
 
-    public char[] getAllChars() {
+    public char[] getBaseAlphabet() {
         return alphabet;
     }
 
