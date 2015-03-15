@@ -93,4 +93,13 @@ public class Key {
                         key.replacingAlphabet);
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.charToEncrypt;
+        hash = 59 * hash + Arrays.hashCode(this.alphabet);
+        hash = 59 * hash + Arrays.hashCode(this.replacingAlphabet);
+        return hash;
+    }
+
 }

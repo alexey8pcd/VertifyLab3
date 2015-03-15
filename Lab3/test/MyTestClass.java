@@ -214,4 +214,24 @@ public class MyTestClass {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void testKeyHashCode() {
+        Key key1 = new Key();
+        Key key2 = new Key();
+        int expected = key1.hashCode();
+        int result = key2.hashCode();
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testKeyHashCode2() {
+        Key key1 = new Key();
+        Key key2 = new Key();
+        char[] alpahbet = {'a', 'b'};
+        key2.setBaseAlphabet(alpahbet);
+        boolean expected = false;
+        boolean result = Integer.compare(key1.hashCode(), key2.hashCode()) == 0;
+        assertEquals(expected, result);
+    }
+
 }
