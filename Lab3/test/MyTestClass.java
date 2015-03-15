@@ -125,32 +125,93 @@ public class MyTestClass {
         };
         boolean expected = false;
         boolean result = Comparer.compareCharArrays(alpahbet1, alphabet2);
-        assertEquals(expected, result);        
+        assertEquals(expected, result);
     }
-    
+
     @Test
     public void testCharArrayEquals2() {
         char[] alpahbet1 = {
             'a', 'b', 'c', 'd'
         };
         char[] alphabet2 = {
-            'a','b','c'
+            'a', 'b', 'c'
         };
         boolean expected = false;
         boolean result = Comparer.compareCharArrays(alpahbet1, alphabet2);
-        assertEquals(expected, result);        
+        assertEquals(expected, result);
     }
-    
+
     @Test
     public void testCharArrayEquals3() {
         char[] alpahbet1 = {
             'a', 'b', 'c', 'd'
         };
         char[] alphabet2 = {
-            'a','b','c','d'
+            'a', 'b', 'c', 'd'
         };
         boolean expected = true;
         boolean result = Comparer.compareCharArrays(alpahbet1, alphabet2);
-        assertEquals(expected, result);        
+        assertEquals(expected, result);
     }
+
+    @Test
+    public void testEqualsKeys() {
+        Key key1 = new Key();
+        char[] alphabet = {
+            'a', 'b', 'c', 'd'
+        };
+        key1.setBaseAlphabet(alphabet);
+        char[] alphabet2 = {
+            's', 'f', 'g', 'n'
+        };
+        key1.setReplacingAlphabet(alphabet2);
+        Key key2 = new Key();
+        char[] alphabet3 = new char[alphabet.length];
+        char[] alphabet4 = new char[alphabet2.length];
+        System.arraycopy(alphabet, 0, alphabet3, 0, alphabet.length);
+        System.arraycopy(alphabet2, 0, alphabet4, 0, alphabet2.length);
+        key2.setBaseAlphabet(alphabet3);
+        key2.setReplacingAlphabet(alphabet4);
+        boolean expected = true;
+        boolean result = key1.equals(key2);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testEqualsKeys2() {
+        Key key1 = new Key();
+        key1.setBaseAlphabet(null);
+        key1.setReplacingAlphabet(null);
+        Key key2 = null;
+        boolean expected = false;
+        boolean result = key1.equals(key2);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testEqualsKeys3() {
+        Key key1 = new Key();
+        char[] alphabet = {'a', 'b'};
+        char[] alphabet2 = {'b', 'a'};
+        key1.setBaseAlphabet(alphabet);
+        Key key2 = new Key();
+        key2.setBaseAlphabet(alphabet2);
+        boolean expected = false;
+        boolean result = key1.equals(key2);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testEqualsKeys4() {
+        Key key1 = new Key();
+        char[] alphabet = {'a', 'b'};
+        char[] alphabet2 = null;
+        key1.setBaseAlphabet(alphabet);
+        Key key2 = new Key();
+        key2.setBaseAlphabet(alphabet2);
+        boolean expected = false;
+        boolean result = key1.equals(key2);
+        assertEquals(expected, result);
+    }
+
 }

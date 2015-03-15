@@ -68,5 +68,29 @@ public class Key {
         }
         return ILLEGAL_SYMBOL;
     }
-      
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Key key = (Key) obj;
+        if (charToEncrypt != key.charToEncrypt) {
+            return false;
+        }
+        if (alphabet == key.alphabet && replacingAlphabet
+                == key.replacingAlphabet) {
+            return true;
+        }
+        return Comparer.compareCharArrays(alphabet, key.alphabet)
+                && Comparer.compareCharArrays(replacingAlphabet,
+                        key.replacingAlphabet);
+    }
+
 }
