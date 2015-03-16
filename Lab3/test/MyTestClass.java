@@ -252,6 +252,16 @@ public class MyTestClass {
     }
     
     @Test
+    public void testCreateKeyAlphabetToKey(){
+        char[] alphabet={'a'};
+        char[] alphabet2={'z'};
+        Key key=new Key(alphabet,alphabet2);
+        assertArrayEquals(alphabet, key.getBaseAlphabet());
+        assertArrayEquals(alphabet2, key.getReplacingAlphabet());
+    }
+    
+    
+    @Test
     public void testEncryptOneChar(){
         Encryptor encryptor=new Encryptor();        
         char[] alphabet={'a'};
@@ -259,6 +269,18 @@ public class MyTestClass {
         encryptor.setKey(new Key(alphabet,replacingAlphabet));
         char toEncrypt='a';
         char expected='z';
+        char result=encryptor.encryptChar(toEncrypt);
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testEncryptOneChar2(){
+        Encryptor encryptor=new Encryptor();        
+        char[] alphabet={'a','b','c'};
+        char[] replacingAlphabet={'h','g','f'};
+        encryptor.setKey(new Key(alphabet,replacingAlphabet));
+        char toEncrypt='c';
+        char expected='f';
         char result=encryptor.encryptChar(toEncrypt);
         assertEquals(expected, result);
     }
