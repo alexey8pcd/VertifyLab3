@@ -10,10 +10,10 @@ public class Key {
     private char[] alphabet;
     private char[] replacingAlphabet;
 
-    public static final char ILLEGAL_SYMBOL = '\u0000';
+    public static final char NULL_SYMBOL = '\u0000';
 
     public Key() {
-        this.charToEncrypt = ILLEGAL_SYMBOL;
+        this.charToEncrypt = NULL_SYMBOL;
         this.alphabet = null;
         this.replacingAlphabet = null;
     }
@@ -21,7 +21,7 @@ public class Key {
     public Key(char[] baseAlphabet, char[] replacingAlphabet) {
         setBaseAlphabet(baseAlphabet);
         setReplacingAlphabet(replacingAlphabet);
-        charToEncrypt = ILLEGAL_SYMBOL;
+        charToEncrypt = NULL_SYMBOL;
     }
 
     public void setCharToEncrypt(char c) {
@@ -54,7 +54,7 @@ public class Key {
      * @param toEncrypt символ, который требуется заменить
      * @return символ алфавита, если символ для замены
      * <br>присутствует в исходном алфавите или
-     * <br><code>Key.ILLEGAL_SYMBOL</code>, если символ не обнаружен в исходном
+     * <br><code>Key.NULL_SYMBOL</code>, если символ не обнаружен в исходном
      * алфавите
      * @throws java.lang.Exception
      */
@@ -72,7 +72,7 @@ public class Key {
                 }
             }
         }
-        return ILLEGAL_SYMBOL;
+        return NULL_SYMBOL;
     }
 
     @Override

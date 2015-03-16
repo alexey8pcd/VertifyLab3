@@ -291,19 +291,36 @@ public class MyTestClass {
         char[] replacingAlphabet = {'h', 'g'};
         encryptor.setKey(new Key(alphabet, replacingAlphabet));
         char toEncrypt = 'c';
-        char expected = Key.ILLEGAL_SYMBOL;
+        char expected = Key.NULL_SYMBOL;
         char result = encryptor.encryptChar(toEncrypt);
         assertEquals(expected, result);
     }
-    
+
     @Test
-    public void testEncryptOneChar4(){
-        Encryptor encryptor=new Encryptor();
+    public void testEncryptOneChar4() {
+        Encryptor encryptor = new Encryptor();
         encryptor.setKey(new Key());
-        char toEncrypt='a';
-        char expected = Key.ILLEGAL_SYMBOL;
-        char result=encryptor.encryptChar(toEncrypt);
+        char toEncrypt = 'a';
+        char expected = Key.NULL_SYMBOL;
+        char result = encryptor.encryptChar(toEncrypt);
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void testEncryptAndDecrypt() {
+        String string="abacan";
+        Encryptor encryptor=new Encryptor();
+        char[] alphabet={
+            'a','b','c','n'
+        };
+        char[] alphabet2={
+            '0','1','2','3'
+        };
+        Key key=new Key(alphabet,alphabet2);
+        encryptor.setKey(key);        
+        String expected = "010203";
+        String result=encryptor.encrypt(string);
+        assertEquals(expected, result);        
     }
 
 }
