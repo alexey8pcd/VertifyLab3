@@ -9,13 +9,25 @@ public class Key {
     private char charToEncrypt;
     private char[] alphabet;
     private char[] replacingAlphabet;
+    private int shift;
+
+    public Key(int shift) {
+        this.charToEncrypt = NULL_SYMBOL;
+        this.shift = shift;
+    }
+
+    public void setShift(int shift) {
+        this.shift = shift;
+    }
+
+    public int getShift() {
+        return shift;
+    }
 
     public static final char NULL_SYMBOL = '\u0000';
 
     public Key() {
         this.charToEncrypt = NULL_SYMBOL;
-        this.alphabet = null;
-        this.replacingAlphabet = null;
     }
 
     public Key(char[] baseAlphabet, char[] replacingAlphabet) {

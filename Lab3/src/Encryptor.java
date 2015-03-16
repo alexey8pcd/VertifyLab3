@@ -52,4 +52,8 @@ class Encryptor {
         }
         return Key.NULL_SYMBOL;
     }
+    
+    public String decrypt(String stringToDecrypt){
+        return "Pure virtual function";
+    }
 }

@@ -307,7 +307,7 @@ public class MyTestClass {
     }
 
     @Test
-    public void testEncryptAndDecrypt() {
+    public void testEncrypt2() {
         String string="abacan";
         Encryptor encryptor=new Encryptor();
         char[] alphabet={
@@ -323,4 +323,14 @@ public class MyTestClass {
         assertEquals(expected, result);        
     }
 
+    @Test
+    public void testEncryptAndDecryptStringDefaultKey(){
+        String expected="Pure virtual function";
+        Encryptor encryptor=new Encryptor();
+        encryptor.setKey(new Key(100));
+        String encryptedString=encryptor.encrypt(expected);
+        String result=encryptor.decrypt(encryptedString);
+        assertEquals(expected, result);
+        
+    }
 }
