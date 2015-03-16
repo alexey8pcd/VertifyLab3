@@ -295,5 +295,15 @@ public class MyTestClass {
         char result = encryptor.encryptChar(toEncrypt);
         assertEquals(expected, result);
     }
+    
+    @Test
+    public void testEncryptOneChar4(){
+        Encryptor encryptor=new Encryptor();
+        encryptor.setKey(new Key());
+        char toEncrypt='a';
+        char expected = Key.ILLEGAL_SYMBOL;
+        char result=encryptor.encryptChar(toEncrypt);
+        assertEquals(expected, result);
+    }
 
 }
