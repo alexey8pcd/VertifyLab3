@@ -331,7 +331,6 @@ public class MyTestClass {
         String encryptedString = encryptor.encrypt(expected);
         String result = encryptor.decrypt(encryptedString);
         assertEquals(expected, result);
-
     }
 
     @Test
@@ -345,6 +344,23 @@ public class MyTestClass {
         encryptor.getKey().setReplacingAlphabet(alphabet2);
         char encrypted = encryptor.encryptChar(expected);
         char result = encryptor.decryptChar(encrypted);
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testDecryptString() {
+        String string = "010203";
+        Encryptor encryptor = new Encryptor();
+        char[] alphabet = {
+            'a', 'b', 'c', 'n'
+        };
+        char[] alphabet2 = {
+            '0', '1', '2', '3'
+        };
+        Key key = new Key(alphabet, alphabet2);
+        encryptor.setKey(key);
+        String expected = "abacan";
+        String result = encryptor.decrypt(string);
         assertEquals(expected, result);
     }
 }

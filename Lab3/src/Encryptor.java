@@ -52,8 +52,8 @@ class Encryptor {
         }
         return Key.NULL_SYMBOL;
     }
-    
-    public char decryptChar(char toDecrypt){
+
+    public char decryptChar(char toDecrypt) {
         char[] alphabet = key.getReplacingAlphabet();
         if (alphabet == null) {
             return Key.NULL_SYMBOL;
@@ -70,6 +70,14 @@ class Encryptor {
     }
 
     public String decrypt(String toDecrypt) {
-        return "Pure virtual function";
+        if (key.getBaseAlphabet() == null) {
+            return "Pure virtual function";
+        }
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < toDecrypt.length(); i++) {
+            char c = toDecrypt.charAt(i);
+            builder.append(decryptChar(c));
+        }
+        return builder.toString();
     }
 }
