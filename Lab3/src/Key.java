@@ -19,7 +19,7 @@ public class Key {
     }
 
     public Key(char[] baseAlphabet, char[] replacingAlphabet) {
-        setBaseAlphabet(alphabet);
+        setBaseAlphabet(baseAlphabet);
         setReplacingAlphabet(replacingAlphabet);
         charToEncrypt = ILLEGAL_SYMBOL;
     }

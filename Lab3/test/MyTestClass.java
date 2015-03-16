@@ -247,44 +247,53 @@ public class MyTestClass {
         expected.setBaseAlphabet(alphabet);
         expected.setReplacingAlphabet(alphabet2);
         encryptor.setKey(expected);
-        Key result=encryptor.getKey();
+        Key result = encryptor.getKey();
         assertEquals(expected, result);
     }
-    
+
     @Test
-    public void testCreateKeyAlphabetToKey(){
-        char[] alphabet={'a'};
-        char[] alphabet2={'z'};
-        Key key=new Key(alphabet,alphabet2);
+    public void testCreateKeyAlphabetToKey() {
+        char[] alphabet = {'a'};
+        char[] alphabet2 = {'z'};
+        Key key = new Key(alphabet, alphabet2);
         assertArrayEquals(alphabet, key.getBaseAlphabet());
         assertArrayEquals(alphabet2, key.getReplacingAlphabet());
     }
-    
-    
+
     @Test
-    public void testEncryptOneChar(){
-        Encryptor encryptor=new Encryptor();        
-        char[] alphabet={'a'};
-        char[] replacingAlphabet={'z'};
-        encryptor.setKey(new Key(alphabet,replacingAlphabet));
-        char toEncrypt='a';
-        char expected='z';
-        char result=encryptor.encryptChar(toEncrypt);
+    public void testEncryptOneChar() {
+        Encryptor encryptor = new Encryptor();
+        char[] alphabet = {'a'};
+        char[] replacingAlphabet = {'z'};
+        encryptor.setKey(new Key(alphabet, replacingAlphabet));
+        char toEncrypt = 'a';
+        char expected = 'z';
+        char result = encryptor.encryptChar(toEncrypt);
         assertEquals(expected, result);
     }
-    
+
     @Test
-    public void testEncryptOneChar2(){
-        Encryptor encryptor=new Encryptor();        
-        char[] alphabet={'a','b','c'};
-        char[] replacingAlphabet={'h','g','f'};
-        encryptor.setKey(new Key(alphabet,replacingAlphabet));
-        char toEncrypt='c';
-        char expected='f';
-        char result=encryptor.encryptChar(toEncrypt);
+    public void testEncryptOneChar2() {
+        Encryptor encryptor = new Encryptor();
+        char[] alphabet = {'a', 'b', 'c'};
+        char[] replacingAlphabet = {'h', 'g', 'f'};
+        encryptor.setKey(new Key(alphabet, replacingAlphabet));
+        char toEncrypt = 'c';
+        char expected = 'f';
+        char result = encryptor.encryptChar(toEncrypt);
         assertEquals(expected, result);
     }
-    
-    
+
+    @Test
+    public void testEncryptOneChar3() {
+        Encryptor encryptor = new Encryptor();
+        char[] alphabet = {'a', 'b', 'c'};
+        char[] replacingAlphabet = {'h', 'g'};
+        encryptor.setKey(new Key(alphabet, replacingAlphabet));
+        char toEncrypt = 'c';
+        char expected = Key.ILLEGAL_SYMBOL;
+        char result = encryptor.encryptChar(toEncrypt);
+        assertEquals(expected, result);
+    }
 
 }
