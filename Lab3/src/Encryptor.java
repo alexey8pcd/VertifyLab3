@@ -53,7 +53,23 @@ class Encryptor {
         return Key.NULL_SYMBOL;
     }
     
-    public String decrypt(String stringToDecrypt){
+    public char decryptChar(char toDecrypt){
+        char[] alphabet = key.getReplacingAlphabet();
+        if (alphabet == null) {
+            return Key.NULL_SYMBOL;
+        }
+        for (int i = 0; i < alphabet.length; i++) {
+            if (i > key.getBaseAlphabet().length - 1) {
+                return Key.NULL_SYMBOL;
+            }
+            if (alphabet[i] == toDecrypt) {
+                return key.getBaseAlphabet()[i];
+            }
+        }
+        return Key.NULL_SYMBOL;
+    }
+
+    public String decrypt(String toDecrypt) {
         return "Pure virtual function";
     }
 }

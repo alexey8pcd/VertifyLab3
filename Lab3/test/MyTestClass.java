@@ -308,29 +308,43 @@ public class MyTestClass {
 
     @Test
     public void testEncrypt2() {
-        String string="abacan";
-        Encryptor encryptor=new Encryptor();
-        char[] alphabet={
-            'a','b','c','n'
+        String string = "abacan";
+        Encryptor encryptor = new Encryptor();
+        char[] alphabet = {
+            'a', 'b', 'c', 'n'
         };
-        char[] alphabet2={
-            '0','1','2','3'
+        char[] alphabet2 = {
+            '0', '1', '2', '3'
         };
-        Key key=new Key(alphabet,alphabet2);
-        encryptor.setKey(key);        
+        Key key = new Key(alphabet, alphabet2);
+        encryptor.setKey(key);
         String expected = "010203";
-        String result=encryptor.encrypt(string);
-        assertEquals(expected, result);        
+        String result = encryptor.encrypt(string);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void testEncryptAndDecryptStringDefaultKey(){
-        String expected="Pure virtual function";
-        Encryptor encryptor=new Encryptor();
+    public void testEncryptAndDecryptStringDefaultKey() {
+        String expected = "Pure virtual function";
+        Encryptor encryptor = new Encryptor();
         encryptor.setKey(new Key(100));
-        String encryptedString=encryptor.encrypt(expected);
-        String result=encryptor.decrypt(encryptedString);
+        String encryptedString = encryptor.encrypt(expected);
+        String result = encryptor.decrypt(encryptedString);
         assertEquals(expected, result);
-        
+
+    }
+
+    @Test
+    public void testDecryptOneChar() {
+        char expected = 'a';
+        Encryptor encryptor = new Encryptor();
+        encryptor.setKey(new Key());
+        char[] alphabet = {'a', 'b', 'c'};
+        char[] alphabet2 = {'v', 'n', 'f'};
+        encryptor.getKey().setBaseAlphabet(alphabet);
+        encryptor.getKey().setReplacingAlphabet(alphabet2);
+        char encrypted = encryptor.encryptChar(expected);
+        char result = encryptor.decryptChar(encrypted);
+        assertEquals(expected, result);
     }
 }
