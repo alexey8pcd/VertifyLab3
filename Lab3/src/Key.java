@@ -1,5 +1,7 @@
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @author Alexey
@@ -10,6 +12,14 @@ public class Key {
     private char[] alphabet;
     private char[] replacingAlphabet;
     private int shift;
+    public static final Map<Character, Integer> DEFAULT_ALPHABET;
+
+    static {
+        DEFAULT_ALPHABET = new TreeMap<>();
+        for (int i = 0; i < 65536; i++) {
+            DEFAULT_ALPHABET.put((char) i, i);
+        }
+    }
 
     public Key(int shift) {
         this.charToEncrypt = NULL_SYMBOL;

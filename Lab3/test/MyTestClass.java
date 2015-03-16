@@ -346,7 +346,7 @@ public class MyTestClass {
         char result = encryptor.decryptChar(encrypted);
         assertEquals(expected, result);
     }
-    
+
     @Test
     public void testDecryptString() {
         String string = "010203";
@@ -361,6 +361,30 @@ public class MyTestClass {
         encryptor.setKey(key);
         String expected = "abacan";
         String result = encryptor.decrypt(string);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testEncryptAndDecryptStringDefaultKey2() {
+        String expected = "abancala bancabala";
+        Encryptor encryptor = new Encryptor();
+        encryptor.setKey(new Key(100));
+        String encrypted = encryptor.encrypt(expected);
+        String result = encryptor.decrypt(encrypted);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testEncryptAndDecryptStringDefaultKey3() {
+        String expected = "Encryptor encryptor=new Encryptor();\n"
+                + "encryptor.setKey(new Key(100));\n"
+                + "String encrypted = encryptor.encrypt(expected);\n"
+                + "String result = encryptor.decrypt(encrypted);\n"
+                + "assertEquals(expected, result);";
+        Encryptor encryptor = new Encryptor();
+        encryptor.setKey(new Key(100));
+        String encrypted = encryptor.encrypt(expected);
+        String result = encryptor.decrypt(encrypted);
         assertEquals(expected, result);
     }
 }

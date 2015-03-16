@@ -20,9 +20,17 @@ class Encryptor {
 
     public String encrypt(String toEncrypt) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < toEncrypt.length(); i++) {
-            char c = toEncrypt.charAt(i);
-            builder.append(encryptChar(c));
+        if (key.getBaseAlphabet() == null) {
+            int shift = key.getShift();
+            for (int i = 0; i < toEncrypt.length(); i++) {
+                builder.append((char) (shift
+                        + Key.DEFAULT_ALPHABET.get(toEncrypt.charAt(i))));
+            }
+        } else {
+            for (int i = 0; i < toEncrypt.length(); i++) {
+                char c = toEncrypt.charAt(i);
+                builder.append(encryptChar(c));
+            }
         }
         return builder.toString();
     }
@@ -70,13 +78,17 @@ class Encryptor {
     }
 
     public String decrypt(String toDecrypt) {
-        if (key.getBaseAlphabet() == null) {
-            return "Pure virtual function";
-        }
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < toDecrypt.length(); i++) {
-            char c = toDecrypt.charAt(i);
-            builder.append(decryptChar(c));
+        if (key.getReplacingAlphabet() == null) {
+            int shift = key.getShift();
+            for (int i = 0; i < toDecrypt.length(); i++) {
+                builder.append((char) (Key.DEFAULT_ALPHABET.get(toDecrypt.charAt(i)) - shift));
+            }
+        } else {
+            for (int i = 0; i < toDecrypt.length(); i++) {
+                char c = toDecrypt.charAt(i);
+                builder.append(decryptChar(c));
+            }
         }
         return builder.toString();
     }
