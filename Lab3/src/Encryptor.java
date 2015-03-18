@@ -80,7 +80,18 @@ class Encryptor {
         return Key.NULL_SYMBOL;
     }
 
+    /**
+     * Расшифровывает заданную строку, используя ключ, установленный для 
+     * объекта класса Encryptor
+     * @param toDecrypt строка, которую требуется расшифровать
+     * @return результат расшифровки, если удалось расшифровать. 
+     * Возвращает <code>null</code>, если строка <code>toDecrypt</code> 
+     * пустая или является <code>null</code>
+     */
     public String decrypt(String toDecrypt) {
+        if (toDecrypt == null || toDecrypt.equals("")) {
+            return null;
+        }
         StringBuilder builder = new StringBuilder();
         if (key.getReplacingAlphabet() == null) {
             int shift = key.getShift();
@@ -97,12 +108,12 @@ class Encryptor {
     }
 
     /**
-     * Шифрует данные в из заданного файла и записывает его в новый файл
-     * при этом имя нового файла соответствует имени старого файла с 
-     * добавленным знаком #. Использует ключ, установленный для объекта класса
-     * Encryptor
+     * Шифрует данные в из заданного файла и записывает его в новый файл при
+     * этом имя нового файла соответствует имени старого файла с добавленным
+     * знаком #. Использует ключ, установленный для объекта класса Encryptor
+     *
      * @param path имя файла, данные из которого требуется зашифровать
-     * @throws IOException 
+     * @throws IOException
      */
     public void encryptFile(String path) throws IOException {
         String path2 = path + "#";
@@ -113,6 +124,6 @@ class Encryptor {
 
     public String decryptFile(String path) throws IOException {
         String source = FileReaderAndWriter.readStringFromFile(path);
-        return decrypt(source);        
+        return decrypt(source);
     }
 }

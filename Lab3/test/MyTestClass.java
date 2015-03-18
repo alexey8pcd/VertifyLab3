@@ -431,5 +431,15 @@ public class MyTestClass {
         String result = encryptor.decryptFile("D:\\aaa#");
         assertEquals(expected, result);
     }
+    
+    @Test
+    public void testEncryptAndDecryptFile2() throws IOException{
+        Encryptor encryptor = new Encryptor();
+        encryptor.setKey(new Key());
+        String expected = null;
+        encryptor.encryptFile("D:\\aaa");
+        String result = encryptor.decryptFile("");
+        assertEquals(expected, result);
+    }
 
 }
