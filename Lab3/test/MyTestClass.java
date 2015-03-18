@@ -419,7 +419,16 @@ public class MyTestClass {
         String expected = "123abc";
         FileReaderAndWriter.writeStringToFile(expected, "D:\\aaa1");
         String result = FileReaderAndWriter.readStringFromFile("D:\\aaa1");
-        System.out.println(result);
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testEncryptAndDecryptFile() throws IOException{
+        Encryptor encryptor = new Encryptor();
+        encryptor.setKey(new Key(100));
+        String expected = FileReaderAndWriter.readStringFromFile("D:\\aaa");
+        encryptor.encryptFile("D:\\aaa");
+        String result = encryptor.decryptFile("D:\\aaa#");
         assertEquals(expected, result);
     }
 

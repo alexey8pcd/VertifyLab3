@@ -96,9 +96,23 @@ class Encryptor {
         return builder.toString();
     }
 
+    /**
+     * Шифрует данные в из заданного файла и записывает его в новый файл
+     * при этом имя нового файла соответствует имени старого файла с 
+     * добавленным знаком #. Использует ключ, установленный для объекта класса
+     * Encryptor
+     * @param path имя файла, данные из которого требуется зашифровать
+     * @throws IOException 
+     */
     public void encryptFile(String path) throws IOException {
-        String path2=path+"#";
-        File file = new File(path2);
-        file.createNewFile();
+        String path2 = path + "#";
+        String source = FileReaderAndWriter.readStringFromFile(path);
+        String encrypted = encrypt(source);
+        FileReaderAndWriter.writeStringToFile(encrypted, path2);
+    }
+
+    public String decryptFile(String path) throws IOException {
+        String source = FileReaderAndWriter.readStringFromFile(path);
+        return decrypt(source);        
     }
 }
