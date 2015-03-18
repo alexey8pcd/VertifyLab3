@@ -1,7 +1,10 @@
 
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,14 +25,28 @@ public class FileReaderAndWriter {
         DataInputStream dataInputStream;
         try {
             dataInputStream = new DataInputStream(
-                    new FileInputStream("D:\\aaa"));
+                    new FileInputStream(fileName));
             while (dataInputStream.available() > 0) {
-                builder.append(dataInputStream.read());
+                builder.append((char)dataInputStream.read());
             }
         } catch (IOException ex) {
             return null;
         }
         return builder.toString();
+    }
+
+    public static void writeStringToFile(String data, String fileName) {
+        DataOutputStream dataOutputStream;
+        try {
+            dataOutputStream = new DataOutputStream(
+                    new FileOutputStream(new File(fileName)));
+            for (int i = 0; i < data.length(); i++) {
+                dataOutputStream.write(data.charAt(i));
+            }
+            dataOutputStream.close();
+        } catch (IOException ex) {
+
+        }
     }
 
 }

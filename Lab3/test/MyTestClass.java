@@ -413,5 +413,14 @@ public class MyTestClass {
         String string = FileReaderAndWriter.readStringFromFile("D:\\aaa");
         assertNotNull(string);
     }
+    
+    @Test
+    public void testWriteDataToFile() throws IOException {
+        String expected = "123abc";
+        FileReaderAndWriter.writeStringToFile(expected, "D:\\aaa1");
+        String result = FileReaderAndWriter.readStringFromFile("D:\\aaa1");
+        System.out.println(result);
+        assertEquals(expected, result);
+    }
 
 }
