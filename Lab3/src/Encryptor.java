@@ -1,4 +1,8 @@
 
+import java.io.File;
+import java.io.IOException;
+
+
 /**
  * @author Alexey
  */
@@ -91,5 +95,11 @@ class Encryptor {
             }
         }
         return builder.toString();
+    }
+
+    public void encryptFile(String path) throws IOException {
+        String path2 = path + "#";
+        File file=new File(path2);
+        file.createNewFile();
     }
 }

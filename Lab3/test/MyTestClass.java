@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -387,4 +391,21 @@ public class MyTestClass {
         String result = encryptor.decrypt(encrypted);
         assertEquals(expected, result);
     }
+
+    @Test
+    public void testEncryptFileAndCheckExistsDefaultKey() {
+        Encryptor encryptor = new Encryptor();
+        encryptor.setKey(new Key(100));
+        boolean expected = true;
+        boolean result;
+        try {
+            encryptor.encryptFile("D:\\aaa");
+            result = new File("D:\\aaa#").exists();
+        } catch (IOException ex) {
+            result = false;
+        }
+        assertEquals(expected, result);
+    }
+    
+    
 }
