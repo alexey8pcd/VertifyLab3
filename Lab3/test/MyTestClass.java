@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -406,6 +407,11 @@ public class MyTestClass {
         }
         assertEquals(expected, result);
     }
-    
-    
+
+    @Test
+    public void testReadDataFromFile() throws IOException {
+        String string = FileReaderAndWriter.readStringFromFile("D:\\aaa");
+        assertNotNull(string);
+    }
+
 }
